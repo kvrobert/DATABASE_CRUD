@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Database Handler</title>
+        <title>Home Side</title>
     </head>
     <body>
-        <h3>::::::::Employees::::::::</h3>
+        <h3>===== Employees =====</h3>
         <ul>
             <li> <a href="insertrecord.jsp">Create new Employee</a> </li>
             <li> <a href="DisplayRecords">Display Employees</a> </li>

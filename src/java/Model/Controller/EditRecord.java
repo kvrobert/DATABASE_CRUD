@@ -27,16 +27,13 @@ public class EditRecord extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
             ID = request.getParameter("id");
-            
             DBCONN = new DatabaseConnection();
             CONN = DBCONN.setConnection();
             STMT = CONN.createStatement();
             
             QUERY = "SELECT * FROM dolgozok where ID=" + ID;
             RES = DBCONN.getResultset(QUERY, CONN);
-            
         } catch (Exception e) {
             request.setAttribute("Error", e);
             RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
@@ -46,7 +43,6 @@ public class EditRecord extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("editdata.jsp");
             rd.forward(request, response);
             out.close();
-           
         }
     }
 

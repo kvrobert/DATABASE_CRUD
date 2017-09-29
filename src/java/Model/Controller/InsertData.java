@@ -1,4 +1,3 @@
-
 package Model.Controller;
 
 import Model.DatabaseConnection;
@@ -12,16 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class InsertData extends HttpServlet {
-    
+
     String FIRSTNAME, LASTNAME, POSITION, SALARY;
     String QUERY;
     Connection conn;
     ResultSet res;
     Statement stmt;
     DatabaseConnection dbconn;
-    
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -30,24 +27,19 @@ public class InsertData extends HttpServlet {
             FIRSTNAME = request.getParameter("firstname");
             LASTNAME = request.getParameter("lastname");
             POSITION = request.getParameter("position");
-            SALARY = request.getParameter("salary"); 
-            
+            SALARY = request.getParameter("salary");
+
             dbconn = new DatabaseConnection();
             conn = dbconn.setConnection();
             stmt = conn.createStatement();
-            
-            QUERY = "INSERT INTO dolgozok (firstname, lastname, positio, salary)values('"+FIRSTNAME+"', '"+LASTNAME+"', '"+POSITION+"', '"+SALARY+"') ";
+
+            QUERY = "INSERT INTO dolgozok (firstname, lastname, positio, salary)values('" + FIRSTNAME + "', '" + LASTNAME + "', '" + POSITION + "', '" + SALARY + "') ";
             int i = stmt.executeUpdate(QUERY);
-            
-             
-                    
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             request.setAttribute("Error", e);
             RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
             rd.forward(request, response);
-        }finally
-        {
+        } finally {
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
             out.close();

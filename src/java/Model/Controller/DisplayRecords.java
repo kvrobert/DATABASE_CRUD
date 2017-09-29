@@ -30,7 +30,6 @@ public class DisplayRecords extends HttpServlet {
             DBCONN = new DatabaseConnection();
             CONN = DBCONN.setConnection();
             STMT = CONN.createStatement();
-
             QUERY = "SELECT * FROM dolgozok";
             RES = DBCONN.getResultset(QUERY, CONN);
             while( RES.next() )
@@ -42,12 +41,8 @@ public class DisplayRecords extends HttpServlet {
                 lst.add(RES.getString("positio"));
                 String salar = Integer.toString(RES.getInt("salary"));
                 lst.add(salar);
-                
-                
             }
             RES.close();
-            
-            
         } catch (Exception e) {
             request.setAttribute("Error", e);
             RequestDispatcher rd = request.getRequestDispatcher("error.jsp");
@@ -56,7 +51,6 @@ public class DisplayRecords extends HttpServlet {
             request.setAttribute("dolgozokData", lst);
             RequestDispatcher rd = request.getRequestDispatcher("displayrecords.jsp");
             rd.forward(request, response);
-             
             lst.clear();
             out.close();
            

@@ -37,9 +37,7 @@ public class UpdateData extends HttpServlet {
             stmt = conn.createStatement();
             
             QUERY = "UPDATE dolgozok SET firstname = '"+FIRSTNAME+"', lastname = '"+LASTNAME+"', positio = '"+POSITION+"', salary ='"+SALARY+"' where id = '" + ID + "'";
-            int i = stmt.executeUpdate(QUERY);
-            
-                    
+            int i = stmt.executeUpdate(QUERY);     
         }catch(Exception e)
         {
             request.setAttribute("Error", e);

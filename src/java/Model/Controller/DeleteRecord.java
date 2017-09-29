@@ -29,16 +29,12 @@ public class DeleteRecord extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
              ID = request.getParameter("id");
-            
             System.out.println(ID);
             dbconn = new DatabaseConnection();
             conn = dbconn.setConnection();
             stmt = conn.createStatement();
-            
             QUERY = "DELETE FROM dolgozok  where id = '" + ID + "'";
             int i =     stmt.executeUpdate(QUERY);
-           
-                    
         }catch(Exception e)
         {
             request.setAttribute("Error", e);

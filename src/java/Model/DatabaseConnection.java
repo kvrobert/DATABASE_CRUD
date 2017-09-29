@@ -11,7 +11,6 @@ public class DatabaseConnection {
     String URL = "jdbc:mysql://localhost:3306/robesz?useSSL=false";
 
     public DatabaseConnection() {
-
     }
 
     public Connection setConnection() {
@@ -19,10 +18,9 @@ public class DatabaseConnection {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(URL, "robesz", "katika");
             System.out.println("Connected to DB....");
-        
         } catch (Exception e) {
             e.getStackTrace();
-             System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
 
         return conn;
